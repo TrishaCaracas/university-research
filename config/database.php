@@ -1,20 +1,40 @@
 <?php
 // Database configuration
 define('DB_HOST', 'localhost');
+define('DB_PORT', '3307'); // Default MySQL port
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'university_research_db');
 
 // Create connection
 function getDBConnection() {
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // Enable mysqli error reporting for better debugging
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    try {
+        // Connect with port specification
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+        
+        // Set charset
+        $conn->set_charset("utf8mb4");
+        
+        return $conn;
+    } catch (mysqli_sql_exception $e) {
+        // Provide helpful error message
+        $error_message = "Database connection failed: " . $e->getMessage();
+        
+        // Check if it's a connection refused error
+        if (strpos($e->getMessage(), 'actively refused') !== false || 
+            strpos($e->getMessage(), 'Connection refused') !== false) {
+            $error_message .= "<br><br><strong>Troubleshooting steps:</strong><br>";
+            $error_message .= "1. Make sure MySQL/MariaDB service is running in XAMPP Control Panel<br>";
+            $error_message .= "2. Check if MySQL is running on port " . DB_PORT . "<br>";
+            $error_message .= "3. Verify your XAMPP MySQL service is started<br>";
+            $error_message .= "4. Check if the database '" . DB_NAME . "' exists";
+        }
+        
+        die($error_message);
     }
-    
-    $conn->set_charset("utf8mb4");
-    return $conn;
 }
 
 // Close connection

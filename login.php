@@ -110,10 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
             
             <div style="margin-top: 20px; text-align: center; color: #666; font-size: 12px;">
-                <p><strong>Test Accounts:</strong></p>
+                <p><strong>Existing Accounts:</strong></p>
                 <p>Admin: admin@university.edu / admin123</p>
-                <p>Faculty: john.smith@university.edu / password123</p>
-                <p>Student: alice.johnson@student.edu / password123</p>
+                <p>Faculty: dell.malams@gmail.com / edelvar123</p>
+                <p>Student: trisha.caracas@gmail.com/ trisha123</p>
             </div>
         </div>
     </div>

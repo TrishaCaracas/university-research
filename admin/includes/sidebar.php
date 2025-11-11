@@ -2,6 +2,7 @@
     <h2>Admin Panel</h2>
     <ul>
         <li><a href="dashboard.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : ''; ?>">Dashboard</a></li>
+        <li><a href="project_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'project_management.php' ? 'active' : ''; ?>">Project Management</a></li>
         <li><a href="faculty_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'faculty_management.php' ? 'active' : ''; ?>">Faculty Management</a></li>
         <li><a href="student_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'student_management.php' ? 'active' : ''; ?>">Student Management</a></li>
         <li><a href="funding_agency_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'funding_agency_management.php' ? 'active' : ''; ?>">Funding Agencies</a></li>
